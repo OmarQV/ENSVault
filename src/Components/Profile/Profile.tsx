@@ -6,17 +6,17 @@ export function Profile() {
 
     const cardStyle = {
         padding: '2rem',
-        backgroundColor: '#2a2a2a',
+        backgroundColor: '#ffffff',
         borderRadius: '12px',
-        boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+        boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)',
         marginTop: '2rem',
-        border: '1px solid #3a3a3a',
+        border: '1px solid #e2e8f0',
         textAlign: 'center' as const,
         minWidth: '300px'
     }
 
     const labelStyle = {
-        color: '#888',
+        color: '#718096',
         fontSize: '0.9rem',
         marginBottom: '0.5rem',
         textTransform: 'uppercase' as const,
@@ -26,7 +26,7 @@ export function Profile() {
     const valueStyle = {
         fontSize: '1.5rem',
         fontWeight: 'bold',
-        color: '#fff',
+        color: '#1a202c',
         wordBreak: 'break-all' as const
     }
 
@@ -34,9 +34,9 @@ export function Profile() {
     
     if (status === 'error')
         return (
-            <div style={{...cardStyle, borderColor: '#ff4d4f'}}>
-                <div style={{color: '#ff4d4f'}}>Error fetching ENS name</div>
-                <small>{error.message}</small>
+            <div style={{...cardStyle, borderColor: '#e53e3e'}}>
+                <div style={{color: '#e53e3e'}}>Error fetching ENS name</div>
+                <small style={{color: '#718096'}}>{error.message}</small>
             </div>
         )
         
@@ -50,12 +50,12 @@ export function Profile() {
             ) : (
                 <>
                     <div style={labelStyle}>ENS Name</div>
-                    <div style={{...valueStyle, color: '#888'}}>No ENS name found</div>
+                    <div style={{...valueStyle, color: '#a0aec0'}}>No ENS name found</div>
                 </>
             )}
-            <div style={{marginTop: '1.5rem',  borderTop: '1px solid #444', paddingTop: '1rem'}}>
+            <div style={{marginTop: '1.5rem',  borderTop: '1px solid #e2e8f0', paddingTop: '1rem'}}>
                 <div style={labelStyle}>Address</div>
-                <div style={{fontSize: '0.9rem', fontFamily: 'monospace', color: '#aaa'}}>
+                <div style={{fontSize: '0.9rem', fontFamily: 'monospace', color: '#4a5568'}}>
                     {address}
                 </div>
             </div>
