@@ -1,73 +1,56 @@
-# React + TypeScript + Vite
+# ENS Proof of Concept (ens_prueba)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project is a Proof of Concept (PoC) demonstrating how to integrate **RainbowKit**, **Wagmi**, and **Viem** into a React application to connect an Ethereum wallet and resolve ENS (Ethereum Name Service) names.
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Tech Stack
 
-## React Compiler
+- **Framework**: [React](https://react.dev/) + [Vite](https://vitejs.dev/)
+- **Language**: [TypeScript](https://www.typescriptlang.org/)
+- **Web3 Libraries**:
+  - [RainbowKit](https://www.rainbowkit.com/): For wallet connection UI.
+  - [Wagmi](https://wagmi.sh/): React Hooks for Ethereum.
+  - [Viem](https://viem.sh/): TypeScript Interface for Ethereum.
+  - [TanStack Query](https://tanstack.com/query/latest): For async state management.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Features
 
-## Expanding the ESLint configuration
+- **Wallet Connection**: Connect via various wallets (MetaMask, Rainbow, WalletConnect, etc.) using RainbowKit's `ConnectButton`.
+- **ENS Resolution**: Automatically fetches and displays the ENS name associated with the connected wallet address using Wagmi's `useEnsName` hook.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Project Structure
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- `src/App.tsx`: Main application entry point. Sets up the providers (`WagmiProvider`, `QueryClientProvider`, `RainbowKitProvider`) and layout.
+- `src/Config/Config.tsx`: Wagmi configuration file (chains, transports, connectors).
+- `src/Components/Profile/Profile.tsx`: Component that displays the ENS name.
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## Getting Started
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+1.  **Install dependencies**:
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+    ```bash
+    npm install
+    # or
+    yarn
+    # or
+    pnpm install
+    ```
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+2.  **Run the development server**:
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+    ```bash
+    npm run dev
+    # or
+    yarn dev
+    # or
+    pnpm dev
+    ```
+
+3.  Open [http://localhost:5173](http://localhost:5173) in your browser.
+
+## Scripts
+
+- `dev`: Starts the development server.
+- `build`: Builds the app for production.
+- `lint`: Runs ESLint.
+- `preview`: Previews the production build locally.
